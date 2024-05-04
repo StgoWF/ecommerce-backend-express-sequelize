@@ -1,19 +1,30 @@
 const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-const sequelize = require('../config/connection.js');
-
+// Extends off Sequelize's Model class
 class Tag extends Model {}
 
+// Initialize Tag model (table) by extending off Sequelize's Model class
 Tag.init(
   {
-    // define columns
+    // Define columns
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,  // Automatically increment the ID for each new entry
+    },
+    tag_name: {
+      type: DataTypes.STRING,
+      allowNull: false,  // This field cannot be empty
+    }
   },
   {
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'tag',
+    timestamps: false,  // No need to keep track of timestamps for this model
+    freezeTableName: true,  // Prevent Sequelize from renaming the table
+    underscored: true,  // Supports the use of underscores instead of camelCasing
+    modelName: 'tag',  // This is how the model is identified in Sequelize
   }
 );
 
