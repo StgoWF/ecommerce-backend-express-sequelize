@@ -21,10 +21,13 @@ Category.init(
   },
   {
     sequelize,
-    timestamps: false,  // No need to keep track of timestamps for this model
+    timestamps: true,  // No need to keep track of timestamps for this model
     freezeTableName: true,  // Prevent Sequelize from renaming the table
     underscored: true,  // Supports the use of underscores instead of camelCasing
     modelName: 'category',  // This is how the model is identified in Sequelize
+    tableName: 'categories',
+    created_at: 'createdAt',  // Specify the name of the column in the database
+    updated_at: 'updatedAt'   // Specify the name of the column in the database
   }
 );
 

@@ -17,7 +17,7 @@ ProductTag.init(
     product_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'product',  // Establishes a reference to the Product model
+        model: 'Product',  // Establishes a reference to the Product model
         key: 'id',
       },
       allowNull: false,  // This field cannot be empty
@@ -36,7 +36,7 @@ ProductTag.init(
     timestamps: false,  // No need to keep track of timestamps for this model
     freezeTableName: true,  // Prevent Sequelize from renaming the table
     underscored: true,  // Supports the use of underscores instead of camelCasing
-    modelName: 'product_tag',  // This is how the model is identified in Sequelize
+    modelName: 'Product_tag',  // This is how the model is identified in Sequelize
   }
 );
 
