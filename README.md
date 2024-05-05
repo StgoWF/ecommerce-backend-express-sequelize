@@ -1,5 +1,5 @@
 # E-commerce Backend
-
+![License](https://img.shields.io/badge/license-MIT-green)
 ## Description
 
 This project is the backend for an e-commerce site. It uses Express.js API with Sequelize to interact with a MySQL database. The backend supports all CRUD operations for managing products, categories, and tags.
