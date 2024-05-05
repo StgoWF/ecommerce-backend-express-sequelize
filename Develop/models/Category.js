@@ -26,8 +26,6 @@ Category.init(
     underscored: true,  // Supports the use of underscores instead of camelCasing
     modelName: 'category',  // This is how the model is identified in Sequelize
     tableName: 'categories',
-    created_at: 'createdAt',  // Specify the name of the column in the database
-    updated_at: 'updatedAt'   // Specify the name of the column in the database
   }
 );
 

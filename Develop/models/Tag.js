@@ -24,7 +24,7 @@ Tag.init(
     timestamps: false,  // No need to keep track of timestamps for this model
     freezeTableName: true,  // Prevent Sequelize from renaming the table
     underscored: true,  // Supports the use of underscores instead of camelCasing
-    modelName: 'Tag',  // This is how the model is identified in Sequelize
+    modelName: 'Tags',  // This is how the model is identified in Sequelize
   }
 );
 
