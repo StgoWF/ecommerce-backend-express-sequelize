@@ -35,7 +35,19 @@ router.get('/:id', async (req, res) => {
   try {
     // Find a single product by its `id` and include associated Category and Tag data
     const product = await Product.findByPk(req.params.id, {
-      include: [Category, { model: Tag, through: ProductTag }],
+      include: [
+        {
+          model: Category,
+        },
+        {
+          model: Tag,
+          as: 'tags', // Make sure this alias 'tags' matches the alias defined in your model associations
+          through: {
+            model: ProductTag,
+            attributes: []  // This can be used to exclude attributes from the join table
+          }
+        }
+      ]
     });
 
     if (!product) {
@@ -45,9 +57,11 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(product);
   } catch (err) {
+    console.error('Error retrieving product:', err);
     res.status(500).json(err);
   }
 });
+
 
 // create new product
 router.post('/', async (req, res) => {
