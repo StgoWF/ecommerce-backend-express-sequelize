@@ -7,15 +7,28 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // get all products
 router.get('/', async (req, res) => {
   try {
-    // Find all products and include associated Category and Tag data
     const products = await Product.findAll({
-      include: [Category, { model: Tag, through: ProductTag }],
+      include: [
+        {
+          model: Category,
+        },
+        {
+          model: Tag,
+          as: 'tags', // Ensure this alias matches the one used in your model associations
+          through: {
+            model: ProductTag,
+            attributes: [], // Exclude through table attributes if not needed
+          }
+        }
+      ],
     });
     res.status(200).json(products);
   } catch (err) {
+    console.error('Error while fetching products:', err);
     res.status(500).json(err);
   }
 });
+
 
 // get one product
 router.get('/:id', async (req, res) => {
